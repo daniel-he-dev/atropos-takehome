@@ -1,11 +1,14 @@
 import "reflect-metadata";
 import express, { Request, Response } from "express";
+import cors from "cors";
 import { Task } from "./entity/Task";
 import { taskQueue } from "./queue";
 import { AppDataSource } from "./data-source";
 
 export const app = express();
 const taskRepo = AppDataSource.getRepository(Task);
+
+app.use(cors());
 
 app.post("/tasks", (req: Request, res: Response) => {
   taskQueue
