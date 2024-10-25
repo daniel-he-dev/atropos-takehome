@@ -51,9 +51,9 @@ app.get("*", (req, res) => {
 });
 
 if (process.env.NODE_ENV !== "test") {
-  app.listen(process.env.PORT || 3000, () => {
+  app.listen(process.env.APP_PORT || 3000, () => {
     console.log(
-      `Server running on http://localhost:${process.env.PORT || 3000}`
+      `Server running on http://localhost:${process.env.APP_PORT || 3000}`
     );
   });
 }

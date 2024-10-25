@@ -1,13 +1,12 @@
 import { DataSource } from "typeorm";
-import { Task } from "./entity/Task";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: "localhost",
-  port: 5432,
-  username: "atropos_task_service",
-  password: "geneva",
-  database: "atropos_tasks",
+  host: process.env.POSTGRES_HOST || "localhost",
+  port: Number(process.env.POSTGRES_PORT) || 5432,
+  username: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  database: process.env.POSTGRES_DB,
   entities: [__dirname + "/entity/*.ts"],
   synchronize: true,
 });

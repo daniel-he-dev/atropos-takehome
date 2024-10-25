@@ -3,7 +3,10 @@ import { Task } from "./entity/Task";
 import { AppDataSource } from "./data-source";
 
 export const taskQueue = new Bull("task-queue", {
-  redis: { host: "localhost", port: 6379 },
+  redis: {
+    host: process.env.REDIS_HOST ?? "localhost",
+    port: process.env.REDIS_PORT ? Number(process.env.REDIS_PORT) : 6379,
+  },
 });
 const taskRepo = AppDataSource.getRepository(Task);
 
