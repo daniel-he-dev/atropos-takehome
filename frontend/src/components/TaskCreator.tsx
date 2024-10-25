@@ -9,7 +9,7 @@ const TaskCreator: React.FC = () => {
   const handleCreateTask = async () => {
     setLoading(true);
     const task = await createTask();
-    if (task) setTaskId(task.id);
+    if (task) setTaskId(task.taskId);
     setLoading(false);
   };
 

@@ -7,7 +7,7 @@ const api = axios.create({
 export const createTask = async () => {
   try {
     const response = await api.post("/tasks");
-    return response.data as { id: string };
+    return response.data as { taskId: string };
   } catch (error) {
     console.error(error);
     return null;
@@ -17,19 +17,19 @@ export const createTask = async () => {
 export const getTaskStatus = async (taskId: string) => {
   try {
     const response = await api.get(`/tasks/${taskId}/status`);
-    return response.data as { id: string; status: string };
+    return response.data as { taskId: string; status: string };
   } catch (error) {
     console.error(error);
-    return { id: taskId, status: "Task Not Found" };
+    return { taskId, status: "Task Not Found" };
   }
 };
 
 export const getTaskResult = async (taskId: string) => {
   try {
     const response = await api.get(`/tasks/${taskId}/result`);
-    return response.data as { id: string; result: string };
+    return response.data as { taskId: string; result: string };
   } catch (error) {
     console.error(error);
-    return { id: taskId, result: "Task Not Found" };
+    return { taskId, result: "Task Not Found" };
   }
 };
